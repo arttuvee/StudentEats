@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset='UTF-8'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Map - Student Restaurants</title>
@@ -11,10 +11,63 @@
   <script src="/js/main.js" defer></script>
   <link rel="stylesheet" href="/css/mapstyle.css">
 
+  <!---Boxicons link-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
-  <h1>Sample Page</h1>
+  <header class='map-header'>
+    <nav>
+      <ul>
+        <li><a href="/pages/map.html">Map</a></li>
+        <li><a href="/pages/profile.html">Profile</a></li>
+      </ul>
+    </nav>
+
+    <div class="user-info" onclick='toggleDropdown(event)'>
+      <img src="/jorma.JPG" alt="Profile Picture">
+      <span>Username</span>
+      <i class='bx bxs-down-arrow'></i>
+      <div id="dropdown" class='dropdown-content'>
+        <ul>
+        <li><a href="/pages/profile.html">Settings</a></li>
+        <li><button id='logout-button'>Logout</button></li>
+      </ul>
+    </div>
+
+  </header>
+
+  <section>
+    <div class='map-container'>
+      <div class='map'>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.0000000000005!2d-122.084!3d37.42199899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e3f2f4f3b3d%3A0x7b3b3f4f3b3b3b3b!2sStanford%20University!5e0!3m2!1sen!2sus!4v1631080000000!5m2!1sen!2sus" width="800" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class='map-info'>
+        <div class="top-bar">
+
+          <div class="filter-options">
+            <label for="filter">Filter:</label>
+            <select id="filter">
+              <option value="all">All</option>
+              <option value="favorites">Favorites</option>
+              <option value='city'>City</option>
+
+            </select>
+          </div>
+        </div>
+
+        <div class='restaurent-list'>
+          <ul>
+            <li>
+              <div class='restaurent'>
+                <h3>Myllypuro</h3>
+            </li>
+          </ul>
+        </div>
+
+  </section>
+
 </body>
 
 </html>

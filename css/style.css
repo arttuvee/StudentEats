@@ -11,10 +11,10 @@ body{
   align-items: center;
   min-height: 100vh;
   background: rgb(36,100,199);
-  background: radial-gradient(circle, rgba(36,100,199,1) 0%, rgba(25,0,112,1) 47%, rgba(26,14,91,1) 82%, rgba(29,38,55,1) 100%);
+  background-image: url('/naminami.jpg');
 }
 
-.container {
+.login-container {
   width: 420px;
   color: white;
   padding: 30px;
@@ -26,7 +26,7 @@ body{
   backdrop-filter: blur(10px);
   transition: border-color 0.3s ease;
 }
-.container:hover {
+.login-container:hover {
   box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
 }
@@ -39,19 +39,19 @@ body{
     font-size: 24px;
 }
 
-.container h1 {
+.login-container h1 {
   text-align: center;
   font-size: 36px;
 }
 
-.container .input-box {
+.login-input-box {
   width: 100%;
   height: 50px;
   position: relative;
   margin: 30px 0;
 }
 
-.input-box input {
+.login-input-box input {
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -64,17 +64,17 @@ body{
   padding: 20px 45px 20px 20px;
   transition: border-color 0.3s ease;
 }
-.input-box input:hover {
+.login-input-box input:hover {
   box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-.input-box input::placeholder {
+.login-input-box input::placeholder {
   color: #FFFFFF;
   padding-left: 20px;
 }
 
-.input-box i {
+.login-input-box i {
   position: absolute;
   right: 20px;
   top: 30%;
@@ -82,7 +82,7 @@ body{
   font-size: 20px;
 }
 
-.container button {
+.login-container button {
   width: 100%;
   height: 50px;
   background-color: transparent;
@@ -97,7 +97,7 @@ body{
   transition: border-color 0.3s ease;
 }
 
-.container button:hover {
+.login-container button:hover {
   box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
 }
@@ -116,3 +116,7 @@ body{
 .register-link a:hover, .register-link a p:hover{
   text-decoration: underline;
 }
+
+/*
+    Map page
+*/

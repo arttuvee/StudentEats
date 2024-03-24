@@ -11,7 +11,7 @@
   <script src='/js/main.js' defer></script>
 
   <!---CSS link-->
-  <link href='/css/style.css' rel='stylesheet'>
+  <link href='/css/mapstyle.css' rel='stylesheet'>
 
   <!---Boxicons link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -23,25 +23,22 @@
 </head>
 
 <body>
-  <div class='login-container'>
-    <i class='bx bx-help-circle' id='menu-icon'></i>
-    <form action=''></form>
-    <h1>Login</h1>
-    <div class='login-input-box'>
-      <input type='text' placeholder='Username' required>
-      <i class='bx bx-user' ></i>
-    </div>
-    <div class='login-input-box'>
-      <input type='password' placeholder='Password' required>
-      <i class='bx bx-lock-alt'></i>
-    </div>
-    <button type='submit' class='btn'>Login</button>
-    <div class='register-link'>
-      <p>Don't have an account? <a href='#'>Register</a></p>
-      <p> or </p>
-      <p><a href='map.html'>Continue without signing in.</a></p>
-    <!-- Forgot password? Remember me? -->
-  </div>
+  <header class='map-header'>
+    <nav>
+      <ul>
+        <li><a href="/pages/map.html">Map</a></li>
+        <li><a href="/pages/profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section>
+    <div class='profile-container'>
+      <div class='profile'>
+        <img src="/jorma.JPG" alt="Profile Picture">
+        <h1>Username</h1>
+        <p>jorma 67v</p>
+  </section>
+
 </body>
 
 </html>

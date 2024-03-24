@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.map-header {
+  height: 80px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.map-header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.map-header nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.map-header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right: 200px;
+  background-color: tomato;
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+.user-info:hover {
+  cursor: pointer;
+}
+.user-info span {
+  margin-left: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  top: 80px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dropdown-content a, .dropdown-content button {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+#logout-button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
+
+body {
+  display: flex;
+  padding-top: 80px;
+  justify-content: center;
+  background-image: url('/naminami.jpg');
+}
+
+section {
+  width: 80%;
+  height: 100%;
+  background: rgb(126,126,126);
+  background: radial-gradient(circle, rgba(126,126,126,0.5) 0%, rgba(98,98,98,0.5) 43%, rgba(69,69,69,0.5) 82%, rgba(39,39,39,0.5) 100%);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.map-info {
+  background-color: gray;
+  height: 100%;
+}
+
+.map {
+  max-height: 100%;
+}
+
