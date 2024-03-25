@@ -11,3 +11,8 @@ document.addEventListener('click', function() {
   const dropdown = document.getElementById('dropdown');
   dropdown.style.display = 'none'; // Hide the dropdown
 });
+
+
+document.querySelector('#settings-icon').addEventListener('click', function() {
+  document.querySelector('.filter-window').classList.toggle('open');
+});

@@ -30,12 +30,11 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: 20px;
 }
 
 .map-header nav ul li {
   display: inline;
-  margin-right: 10px;
+  margin-right: 10vh;
 }
 
 .map-header nav ul li a {
@@ -45,12 +44,14 @@ ul {
 
 /* User Info Styles */
 .user-info {
+  width: 10%;
+  height: 70%;
   display: flex;
   align-items: center;
-  margin-right: 200px;
+  margin-right: 1em;
   background-color: tomato;
-  padding: 10px 20px;
-  border-radius: 15px;
+  padding: 1em;
+  border-radius: 1em;
 }
 
 .user-info:hover {
@@ -190,6 +191,27 @@ section {
   backdrop-filter: blur(10px);
   transition: border-color 0.3s ease;
   border-radius: 15px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.filter-window {
+  /* styles for when the filter window is closed */
+  width: 0;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.filter-window.open {
+  height: 100%;
+  width: 20%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease;
+  border-radius: 15px;
+  margin-left: 1%;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
 }
 

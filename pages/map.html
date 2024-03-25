@@ -8,7 +8,7 @@
   <title>Map - Student Restaurants</title>
 
   <!---Links-->
-  <script src="/js/main.js" defer></script>
+
   <link rel="stylesheet" href="/css/mapstyle.css">
 
   <!---Boxicons link-->
@@ -50,16 +50,8 @@
 
       <div class='map-info'>
         <div class="top-bar">
-
-          <div class="filter-options">
-            <label for="filter">Filter:</label>
-            <select id="filter">
-              <option value="all">All</option>
-              <option value="favorites">Favorites</option>
-              <option value='city'>City</option>
-
-            </select>
-          </div>
+          <h2>Restaurants</h2>
+          <i class='bx bx-cog' id='settings-icon'></i>
         </div>
 
         <div class='restaurent-list'>
@@ -90,8 +82,14 @@
             </li>
           </ul>
         </div>
+      </div>
+      <div class="filter-window">
+        <!-- Filter options... -->
+      </div>
 
   </section>
+
+  <script src="/js/main.js"></script>
 </body>
 
 <script src="/js/map.js"></script>
