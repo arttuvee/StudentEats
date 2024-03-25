@@ -14,6 +14,11 @@
   <!---Boxicons link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+  <!--Leaflet link-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
 </head>
 
 <body>
@@ -40,9 +45,9 @@
 
   <section>
     <div class='map-container'>
-      <div class='map'>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.0000000000005!2d-122.084!3d37.42199899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e3f2f4f3b3d%3A0x7b3b3f4f3b3b3b3b!2sStanford%20University!5e0!3m2!1sen!2sus!4v1631080000000!5m2!1sen!2sus" width="800" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
+      <div id="leaflet-map"></div>
+
+
       <div class='map-info'>
         <div class="top-bar">
 
@@ -67,7 +72,8 @@
         </div>
 
   </section>
-
 </body>
+
+<script src="/js/map.js"></script>
 
 </html>

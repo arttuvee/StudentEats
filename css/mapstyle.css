@@ -1,3 +1,7 @@
+:root {
+  --header-height: 80px; /* Height of the header */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +13,9 @@ ul {
   list-style: none;
 }
 
+/* Header Styles */
 .map-header {
-  height: 80px;
+  height: var(--header-height);
   position: fixed;
   width: 100%;
   top: 0;
@@ -20,15 +25,11 @@ ul {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-
 .map-header nav ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  list-style-type: none;
-  margin: 0;
   margin-right: 20px;
-  padding: 0;
 }
 
 .map-header nav ul li {
@@ -41,6 +42,7 @@ ul {
   text-decoration: none;
 }
 
+/* User Info Styles */
 .user-info {
   display: flex;
   align-items: center;
@@ -49,13 +51,16 @@ ul {
   padding: 10px 20px;
   border-radius: 15px;
 }
+
 .user-info:hover {
   cursor: pointer;
 }
+
 .user-info span {
   margin-left: 10px;
 }
 
+/* Dropdown Menu Styles */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -64,7 +69,7 @@ ul {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 12px 16px;
   z-index: 1;
-  top: 80px;
+  top: var(--header-height);
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -86,47 +91,49 @@ ul {
   border-radius: 10px;
 }
 
-img {
+.user-info img {
   width: 50px;
   height: 50px;
   border: solid 2px black;
   border-radius: 50%;
 }
 
-
+/* Body Styles */
 body {
-  display: flex;
-  padding-top: 80px;
-  justify-content: center;
+  margin-top: var(--header-height); /* Ensure content starts below header */
   background-image: url('/naminami.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
 }
 
+/* Section Styles */
 section {
   width: 80%;
-  height: 100%;
+  height: calc(100vh - var(--header-height)); /* Fill remaining viewport height */
   background: rgb(126,126,126);
   background: radial-gradient(circle, rgba(126,126,126,0.5) 0%, rgba(98,98,98,0.5) 43%, rgba(69,69,69,0.5) 82%, rgba(39,39,39,0.5) 100%);
-  align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Map Container Styles */
 .map-container {
-  width: 100%;
-  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
 }
 
+/* Map Info Styles */
 .map-info {
   background-color: gray;
   height: 100%;
 }
 
-.map {
-  max-height: 100%;
+/* Map Styles */
+#leaflet-map {
+  height: 600px; /* Adjust height as needed */
+  width: 800px; /* Or specify a fixed width */
 }
 
