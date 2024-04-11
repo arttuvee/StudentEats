@@ -6,9 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Map - Student Restaurants</title>
+  <link rel="icon" href="/restaurant.png" type="image/x-icon">
 
   <!---Links-->
 
+  <!--CSS link-->
   <link rel="stylesheet" href="/app/css/style.css">
 
   <!---Boxicons link-->
@@ -44,51 +46,63 @@
 
   </header>
 
-  <section>
-    <div class='map-container'>
-      <div id="leaflet-map"></div>
+  <div class='main-page'>
+    <section>
+      <div class='main-page-text'>
+        <h1>Find the best student restaurants near you</h1>
+        <p>Discover the best student restaurants in your area. Find the best deals and discounts for students.</p>
+      </div>
+    </section>
 
-
-      <div class='map-info'>
-        <div class="top-bar">
-          <h2>Restaurants</h2>
-          <i class='bx bx-cog' id='settings-icon'></i>
+    <section>
+      <div class='map-container'>
+        <div class='map-top-bar'>
+          <h2>Map</h2>
+          <i class='bx bx-search'></i>
         </div>
 
-        <div class='restaurent-list'>
-          <ul>
-            <li>
-              <div class='list-item'>
-                <h3>Placeholder Restaurant 1</h3>
-                <p>City</p>
-                <p>Address</p>
-                <p>lorem ipsum</p>
-            </div>
-        </li>
-        <li>
-            <div class='list-item'>
-                <h3>Placeholder Restaurant 2</h3>
-                <p>City</p>
-                <p>Address</p>
-                <p>lorem ipsum</p>
-            </div>
-        </li>
-        <li>
-            <div class='list-item'>
-                <h3>Placeholder Restaurant 3</h3>
-                <p>City</p>
-                <p>Address</p>
-                <p>lorem ipsum</p>
-            </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="filter-window">
-        <!-- Filter options... -->
-      </div>
 
-  </section>
+        <div class='map-content'>
+          <div id="leaflet-map"></div>
+
+          <div class='map-info'>
+            <div class='restaurent-list'>
+              <ul>
+                <li>
+                  <div class='list-item'>
+                    <h3>Placeholder Restaurant 1</h3>
+                    <p>City</p>
+                    <p>Address</p>
+                    <p>lorem ipsum</p>
+                  </div>
+                </li>
+                <li>
+                  <div class='list-item'>
+                    <h3>Placeholder Restaurant 2</h3>
+                    <p>City</p>
+                    <p>Address</p>
+                    <p>lorem ipsum</p>
+                  </div>
+                </li>
+                <li>
+                  <div class='list-item'>
+                    <h3>Placeholder Restaurant 3</h3>
+                    <p>City</p>
+                    <p>Address</p>
+                    <p>lorem ipsum</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+    </section>
+  </div>
+  <footer>
+    <h2>Footer</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum accusamus maiores, sequi hic ratione adipisci! Fugiat similique magnam, atque eaque vitae fuga sunt pariatur quidem, perspiciatis vel quas dolore laudantium.</p>
+  </footer>
 
   <script src="/app/js/main.js"></script>
 </body>
