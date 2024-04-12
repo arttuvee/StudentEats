@@ -1,3 +1,4 @@
+/* Variables */
 :root {
   --header-height: 10vh;
   --primary-color: #7234FA;
@@ -65,7 +66,7 @@ ul {
   display: flex;
   align-items: center;
   margin-right: 10%;
-  background-color: var(--primary-color);
+  background-color: var(--background-color);
   padding: 1em;
   border-radius: 1em;
 }
@@ -76,6 +77,13 @@ ul {
 
 .user-info span {
   margin-left: 10px;
+}
+
+.user-info img {
+  width: 50px;
+  height: 50px;
+  border: solid 2px black;
+  border-radius: 50%;
 }
 
 /* Dropdown Menu Styles */
@@ -109,13 +117,6 @@ ul {
   border-radius: 10px;
 }
 
-.user-info img {
-  width: 50px;
-  height: 50px;
-  border: solid 2px black;
-  border-radius: 50%;
-}
-
 /* Body Styles */
 body {
   background-size: cover;
@@ -125,6 +126,7 @@ body {
   background: whitesmoke;
 }
 
+/* Main Page Styles */
 .main-page {
   width: 80%; /* Adjust the width to account for the margins */
   display: flex;
@@ -136,6 +138,7 @@ body {
   margin-right: 10%; /* Add this line */
   padding-bottom: 10%;
 }
+
 /* Section Styles */
 section {
   display: flex;
@@ -144,6 +147,7 @@ section {
   width: 100%;
 }
 
+/* Main Page Text Section Styles */
 .main-page-text {
   color: var(--text-color);
   text-align: center;
@@ -172,6 +176,7 @@ section {
   flex-direction: row;
 }
 
+/* Map Top Bar Styles */
 .map-top-bar {
   width: 100%;
   height: 10%;
@@ -179,13 +184,60 @@ section {
   color: white;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.map-top-bar h2 {
+  margin-left: 2%;
+}
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchbox {
+  width: 100%;
+  height: 50%;
+  margin-left: 2%;
+  border-radius: 10px;
+  padding: 1%;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+#searchbutton {
+  width: 10%;
+  height: 50%;
+  margin-right: 2%;
+  border-radius: 10px;
+  border: none;
+  padding: 2%;
+  background-color: var(--background-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#menubutton {
+  margin-right: 2%;
+  border-radius: 10px;
+  border: none;
+  padding: 1%;
+  background-color: var(--background-color);
+  color: white;
+}
+
+/* Map Styles */
 #leaflet-map {
   height: 100%; /* Adjust height as needed */
   width: 75%;
 }
 
+/* Restaurant List Styles */
 .map-info {
   height: 100%;
   width: 25%;
@@ -220,6 +272,7 @@ section {
   border-color: rgba(255, 255, 255, 1);
 }
 
+/* Footer Styles */
 footer {
   clear: both;
   position: relative;

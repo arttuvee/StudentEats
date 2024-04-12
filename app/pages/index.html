@@ -43,7 +43,6 @@
         <li><button id='logout-button'>Logout</button></li>
       </ul>
     </div>
-
   </header>
 
   <div class='main-page'>
@@ -58,7 +57,11 @@
       <div class='map-container'>
         <div class='map-top-bar'>
           <h2>Map</h2>
-          <i class='bx bx-search'></i>
+          <form action='/search' method='get' class='searchbar'>
+            <input type='search' name='q' placeholder='Search' id='searchbox'>
+            <button type='submit' id='searchbutton'><i class='bx bx-search'></i></button>
+          </form>
+          <i class='bx bx-menu' id='menubutton'></i>
         </div>
 
 
