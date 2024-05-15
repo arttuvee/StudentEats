@@ -28,12 +28,14 @@ leafletMap.on('locationfound', function(e) {
   });
   L.marker(e.latlng, {icon: iconMy}).addTo(leafletMap).bindPopup('Your location');
 });
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright"></a>',
 }).addTo(leafletMap);
 
 document.addEventListener('DOMContentLoaded', async function() {
   await fetchRestaurants();
+  await getUserLocation();
   await checkUser();
 });
 
@@ -81,6 +83,15 @@ buttonReturnLogin.onclick = function() {
   userInfo.style.display = 'none';
   formLogin.reset();
 };
+
+async function getUserLocation() {
+  if ('geolocation' in navigator) {
+    await navigator.geolocation.getCurrentPosition(function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+    });
+  }
+}
 
 async function fetchRestaurants() {
   const url = 'https://10.120.32.94/restaurant/api/v1/restaurants/';
