@@ -4,16 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Map - Student Restaurants</title>
+    <title>Student Eats</title>
     <link rel="icon" href="/restaurant.png" type="image/x-icon" />
 
     <!---Links-->
 
     <!--CSS link-->
-    <link rel="stylesheet" href="/app/css/style.css" />
-
-    <!--JS links-->
-    <script src="/app/js/mapp.js"></script>
+    <link rel="stylesheet" href="/app/style.css" />
 
     <!---Boxicons link-->
     <link
@@ -41,7 +38,15 @@
       <h1 class="header-title" id="header-title">Student Eats</h1>
     </header>
     <div class="container">
-      <div class="box">
+      <div class="sidepanel">
+        <h1 class="menu-header">Menu</h1>
+        <div id="restaurant-menu"></div>
+      </div>
+
+      <div id="map"></div>
+      <dialog></dialog>
+
+      <div class="sidepanel">
         <button id="login-button" class="button">Login</button>
         <button id="register-button" class="button">Register</button>
         <form id="login-form" class="form">
@@ -57,17 +62,17 @@
             id="login-password"
             name="password"
             required
-            placeholder="Enter password..."
+            placeholder="Enter a password..."
           />
           <input class="button" type="submit" value="Login" />
           <input
             id="login-return-button"
             class="button"
             type="button"
-            value="Return"
+            value="Back"
           />
         </form>
-        <form id="registerForm" class="form">
+        <form id="register-form" class="form">
           <input
             type="text"
             id="register-username"
@@ -94,18 +99,13 @@
             id="register-return-button"
             class="button"
             type="button"
-            value="Return"
+            value="Back"
           />
         </form>
         <div id="user-info"></div>
         <button class="button" id="logout-button">Logout</button>
       </div>
-      <div id="map"></div>
-      <dialog></dialog>
-      <div class="box">
-        <h1 class="menu-header">Menu</h1>
-        <div id="restauran-menu"></div>
-      </div>
     </div>
+    <script src="/app/main.js"></script>
   </body>
 </html>
