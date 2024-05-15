@@ -103,6 +103,11 @@ async function fetchRestaurants() {
 
 function clickMarker(item, id) {
   console.log(id);
+  if (!id) {
+    console.error('Invalid id:', id);
+    return;
+  }
+
   dialogBox.innerHTML = `
     <h1>${item.name}</h1>
     <p>${item.address}, ${item.postalCode}, ${item.city}</p>
@@ -302,7 +307,7 @@ async function checkUser() {
     buttonRegister.style.display = 'none';
     const userData = document.createElement('p');
     const favoriteRes = document.createElement('p');
-    userData.textContent = `Tervetuloa, ${user.username}`;
+    userData.textContent = `Welcome, ${user.username}`;
     userData.style.color = 'white';
     const favoriteId = user.favouriteRestaurant;
     const favorite = await getFavorite(favoriteId);
