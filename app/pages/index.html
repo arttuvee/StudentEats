@@ -1,112 +1,111 @@
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map - Student Restaurants</title>
+    <link rel="icon" href="/restaurant.png" type="image/x-icon" />
 
-<head>
-  <meta charset='UTF-8'>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Map - Student Restaurants</title>
-  <link rel="icon" href="/restaurant.png" type="image/x-icon">
+    <!---Links-->
 
-  <!---Links-->
+    <!--CSS link-->
+    <link rel="stylesheet" href="/app/css/style.css" />
 
-  <!--CSS link-->
-  <link rel="stylesheet" href="/app/css/style.css">
+    <!--JS links-->
+    <script src="/app/js/mapp.js"></script>
 
-  <!---Boxicons link-->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!---Boxicons link-->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
-  <!--Leaflet link-->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!--Leaflet link-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+  </head>
 
-
-</head>
-
-<body>
-  <header class='map-header'>
-    <h1 class='header-logo'>logo</h1>
-    <nav>
-      <ul>
-        <li><a href="/app/pages/map.html">Map</a></li>
-        <li><a href="/app/pages/profile.html">Profile</a></li>
-      </ul>
-    </nav>
-
-    <div class="user-info" onclick='toggleDropdown(event)'>
-      <img src="/jorma.JPG" alt="Profile Picture">
-      <span>Username</span>
-      <i class='bx bxs-down-arrow'></i>
-      <div id="dropdown" class='dropdown-content'>
-        <ul>
-        <li><a href="/pages/profile.html">Settings</a></li>
-        <li><button id='logout-button'>Logout</button></li>
-      </ul>
-    </div>
-  </header>
-
-  <div class='main-page'>
-    <section>
-      <div class='main-page-text'>
-        <h1>Find the best student restaurants near you</h1>
-        <p>Discover the best student restaurants in your area. Find the best deals and discounts for students.</p>
+  <body>
+    <header>
+      <img id="logo" src="#" alt="Logo" />
+      <h1 class="header-title" id="header-title">Student Eats</h1>
+    </header>
+    <div class="container">
+      <div class="box">
+        <button id="login-button" class="button">Login</button>
+        <button id="register-button" class="button">Register</button>
+        <form id="login-form" class="form">
+          <input
+            type="text"
+            id="login-username"
+            name="username"
+            required
+            placeholder="Enter username..."
+          /><br />
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            required
+            placeholder="Enter password..."
+          />
+          <input class="button" type="submit" value="Login" />
+          <input
+            id="login-return-button"
+            class="button"
+            type="button"
+            value="Return"
+          />
+        </form>
+        <form id="registerForm" class="form">
+          <input
+            type="text"
+            id="register-username"
+            name="username-register"
+            required
+            placeholder="Enter username..."
+          /><br />
+          <input
+            type="email"
+            id="register-email"
+            name="email-register"
+            required
+            placeholder="Enter email..."
+          /><br />
+          <input
+            type="password"
+            id="register-password"
+            name="password-register"
+            required
+            placeholder="Enter password..."
+          />
+          <input class="button" type="submit" value="Register" />
+          <input
+            id="register-return-button"
+            class="button"
+            type="button"
+            value="Return"
+          />
+        </form>
+        <div id="user-info"></div>
+        <button class="button" id="logout-button">Logout</button>
       </div>
-    </section>
-
-    <section>
-      <div class='map-container'>
-        <div class='map-top-bar'>
-          <h2>Map</h2>
-          <form action='/search' method='get' class='searchbar'>
-            <input type='search' name='q' placeholder='Search' id='searchbox'>
-            <button type='submit' id='searchbutton'><i class='bx bx-search'></i></button>
-          </form>
-          <i class='bx bx-menu' id='menubutton'></i>
-        </div>
-
-
-        <div class='map-content'>
-          <div id="leaflet-map"></div>
-
-          <div class='map-info'>
-            <div class='restaurent-list'>
-              <ul>
-                <li>
-                  <div class='list-item'>
-                    <h3>Placeholder Restaurant 1</h3>
-                    <p>City</p>
-                    <p>Address</p>
-                    <p>lorem ipsum</p>
-                  </div>
-                </li>
-                <li>
-                  <div class='list-item'>
-                    <h3>Placeholder Restaurant 2</h3>
-                    <p>City</p>
-                    <p>Address</p>
-                    <p>lorem ipsum</p>
-                  </div>
-                </li>
-                <li>
-                  <div class='list-item'>
-                    <h3>Placeholder Restaurant 3</h3>
-                    <p>City</p>
-                    <p>Address</p>
-                    <p>lorem ipsum</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-    </section>
-  </div>
-  <footer>
-    <h2>Footer</h2>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum accusamus maiores, sequi hic ratione adipisci! Fugiat similique magnam, atque eaque vitae fuga sunt pariatur quidem, perspiciatis vel quas dolore laudantium.</p>
-  </footer>
-
-  <script src="/app/js/main.js"></script>
-</body>
+      <div id="map"></div>
+      <dialog></dialog>
+      <div class="box">
+        <h1 class="menu-header">Menu</h1>
+        <div id="restauran-menu"></div>
+      </div>
+    </div>
+  </body>
 </html>
