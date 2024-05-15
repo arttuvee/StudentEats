@@ -2,287 +2,118 @@
 :root {
   --header-height: 10vh;
   --primary-color: #7234FA;
-  --secondary-color: #ddd8ce; /* Gold */
+  --secondary-color: #ddd8ce;
   --header-color: #222222;
-  --background-color: #334464; /* Dark grey */
+  --background-color: #334464;
   --text-color: #312F36;
-  --secondary-text-color: #666; /* Medium grey */
+  --secondary-text-color: #666;
   --background: linear-gradient(0deg, rgba(187,187,187,1) 0%, rgba(214,214,214,1) 100%);
 }
 
-* {
-  margin: 0;
-  padding: 0;
+html, body {
+  background: var(--background);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+header {
+  background-color: var(--header-color);
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  margin-top: 1rem;
+  padding: 0 1.25rem;
+  box-shadow: 4px 5px black;
+}
+
+#logo {
+  max-width: 100px;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  padding: 1%;
+  overflow: auto;
+}
+
+.headerText {
+  font-size: 2.5rem;
+  color: white;
+  padding-left: 7rem;
+}
+
+
+#map {
+  flex: 3;
+  padding: 1.25rem;
+  margin: 0.5%;
+  box-shadow: 4px 5px black;
+  border: 1px solid black;
+}
+
+.box {
+  flex: 1;
+  padding: 1.25rem;
+  margin: 0.5%;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  overflow: auto;
+  border: 1px solid black;
+  box-shadow: 4px 5px black;
+
 }
 
-ul {
-  list-style: none;
-}
-
-/* Header Styles */
-.map-header {
-  height: var(--header-height);
-  position: static;
-  width: 100%;
-  top: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: var(--header-color);
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
-}
-
-.header-logo {
-  width: 10%;
-  height: 70%;
-  display: flex;
-  align-items: center;
-  margin-right: 20em;
-  color: white;
-}
-
-.map-header nav ul {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.map-header nav ul li {
-  display: inline;
-  margin-right: 10vh;
-}
-
-.map-header nav ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-/* User Info Styles */
-.user-info {
-  width: 12%;
-  height: 70%;
-  display: flex;
-  align-items: center;
-  margin-right: 10%;
-  background-color: var(--background-color);
-  padding: 1em;
-  border-radius: 1em;
-}
-
-.user-info:hover {
-  cursor: pointer;
-}
-
-.user-info span {
-  margin-left: 10px;
-}
-
-.user-info img {
-  width: 50px;
-  height: 50px;
-  border: solid 2px black;
-  border-radius: 50%;
-}
-
-/* Dropdown Menu Styles */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  min-width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
-  top: var(--header-height);
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.dropdown-content a, .dropdown-content button {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  width: 100%;
-}
-
-#logout-button {
-  background-color: red;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-/* Body Styles */
-body {
-  background-size: cover;
-  display: flex;
-  flex-direction: column; /* Add this line */
-  justify-content: center;
-  background: whitesmoke;
-}
-
-/* Main Page Styles */
-.main-page {
-  width: 80%; /* Adjust the width to account for the margins */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: var(--background-color);
-  margin-left: 10%; /* Add this line */
-  margin-right: 10%; /* Add this line */
-  padding-bottom: 10%;
-}
-
-/* Section Styles */
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-/* Main Page Text Section Styles */
-.main-page-text {
-  color: var(--text-color);
-  text-align: center;
-  font-size: 2em;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 2%;
-  background-color: var(--secondary-color);
-}
-
-/* Map Container Styles */
-.map-container {
-  display: flex;
-  flex-direction: column;
-  height: 80vh;
-  width: 100%;
-  margin-left: 2%;
-  margin-right: 2%;
-}
-
-.map-content {
-  display: flex;
-  height: 100%;
-  flex-direction: row;
-}
-
-/* Map Top Bar Styles */
-.map-top-bar {
-  width: 100%;
-  height: 10%;
-  background-color: var(--header-color);
-  color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.map-top-bar h2 {
-  margin-left: 2%;
-}
-
-.searchbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-#searchbox {
-  width: 100%;
-  height: 50%;
-  margin-left: 2%;
-  border-radius: 10px;
-  padding: 1%;
-  background-color: transparent;
-  border: 1px solid white;
-  color: white;
-}
-#searchbutton {
-  width: 10%;
-  height: 50%;
-  margin-right: 2%;
-  border-radius: 10px;
-  border: none;
-  padding: 2%;
-  background-color: var(--background-color);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#menubutton {
-  margin-right: 2%;
-  border-radius: 10px;
-  border: none;
-  padding: 1%;
-  background-color: var(--background-color);
-  color: white;
-}
-
-/* Map Styles */
-#leaflet-map {
-  height: 100%; /* Adjust height as needed */
-  width: 75%;
-}
-
-/* Restaurant List Styles */
-.map-info {
-  height: 100%;
-  width: 25%;
-  background-color: white;
-}
-
-.restaurent-list {
-  height: 100%;
-  overflow-y: auto;
-}
-
-.map-info .list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: left;
-  flex-direction: column;
-  margin: 10px 0;
-  padding: 2%;
-  margin: 5% 2% 5% 2%;
-  border-radius: 10px;
-  border: none;
+.button {
   outline: none;
-  background-color: whitesmoke;
-  border: 2px solid gray;
-  backdrop-filter: blur(10px);
-  transition: border-color 0.3s ease;
-  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  background-color: var(--background-color);
+  height: 8%;
+  margin: 0.5rem;
+  border: 1px solid black;
+  box-shadow: 4px 5px black;
 }
 
-.map-info .list-item:hover {
-  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
-  border-color: rgba(255, 255, 255, 1);
+button:hover {
+  box-shadow: 3px 4px black;
 }
 
-/* Footer Styles */
-footer {
-  clear: both;
-  position: relative;
-  width: 100%;
-  display: flex;
+dialog {
+  background-color: var(--background-color);
+  color: white;
+  border: 1px solid black;
+  min-width: 30vw;
+}
+
+dialog h1 {
+  margin-top: 0;
+}
+
+dialog button {
+  float: right;
+}
+
+.form {
+  display: none;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: var(--header-color);
-  padding: 2%;
 }
 
-
+.form input[type="submit"], .form input[type="button"] {
+  height: 20%;
+  width: 50%;
+  padding: 0.3rem 0.6rem;
+  margin-top: 0.6rem;
+}
