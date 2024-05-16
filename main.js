@@ -21,7 +21,7 @@ leafletMap.locate({setView: true, maxZoom: 16});
 leafletMap.on('locationfound', function(e) {
   leafletMap.setView(e.latlng, 12);
   const iconMy = L.icon({
-    iconUrl: '/resources/usermarker.png',
+    iconUrl: 'resources/usermarker.png',
     iconSize: [51, 51],
     iconAnchor: [14, 41],
     popupAnchor: [14, -41],
@@ -99,14 +99,14 @@ async function fetchRestaurants() {
   const favoriteRestaurantId = user.favouriteRestaurant;
 
   const defaultIcon = L.icon({
-    iconUrl: '/resources/defaultmarker.png',
+    iconUrl: 'resources/defaultmarker.png',
     iconSize: [41, 41],
     iconAnchor: [12, 41],
     popupAnchor: [8, -34],
   });
 
   const favoriteIcon = L.icon({
-    iconUrl: '/resources/favmarker.png',
+    iconUrl: 'resources/favmarker.png',
     iconSize: [51, 51],
     iconAnchor: [12, 41],
     popupAnchor: [8, -41],
