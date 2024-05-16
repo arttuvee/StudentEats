@@ -334,12 +334,10 @@ async function checkUser() {
     const userData = document.createElement('p');
     const favoriteRes = document.createElement('p');
     userData.textContent = `Welcome, ${user.username}`;
-    userData.style.color = 'white';
     const favoriteId = user.favouriteRestaurant;
     const favorite = await getFavorite(favoriteId);
     console.log(favorite);
     favoriteRes.textContent = 'Favorite: ' + favorite.name;
-    favoriteRes.style.color = 'white';
     userInfo.appendChild(userData);
     userInfo.appendChild(favoriteRes);
     buttonLogout.style.display = 'block';
