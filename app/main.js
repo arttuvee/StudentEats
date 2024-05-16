@@ -19,12 +19,12 @@ let menuType = '';
 const leafletMap = L.map('map');
 leafletMap.locate({setView: true, maxZoom: 16});
 leafletMap.on('locationfound', function(e) {
-  leafletMap.setView(e.latlng, 10);
+  leafletMap.setView(e.latlng, 12);
   const iconMy = L.icon({
-    iconUrl: '#', // kesken
-    iconSize: [41, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [8, -41],
+    iconUrl: '/img/usermarker.png',
+    iconSize: [51, 51],
+    iconAnchor: [14, 41],
+    popupAnchor: [14, -41],
   });
   L.marker(e.latlng, {icon: iconMy}).addTo(leafletMap).bindPopup('Your location');
 });
@@ -95,6 +95,23 @@ async function getUserLocation() {
 
 async function fetchRestaurants() {
   const url = 'https://10.120.32.94/restaurant/api/v1/restaurants/';
+  const user = JSON.parse(localStorage.getItem('user'));
+  const favoriteRestaurantId = user.favouriteRestaurant;
+
+  const defaultIcon = L.icon({
+    iconUrl: '/img/defaultmarker.png',
+    iconSize: [41, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [8, -34],
+  });
+
+  const favoriteIcon = L.icon({
+    iconUrl: '/img/favmarker.png',
+    iconSize: [51, 51],
+    iconAnchor: [12, 41],
+    popupAnchor: [8, -41],
+  });
+
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -103,7 +120,10 @@ async function fetchRestaurants() {
       const latitude = coordinates[0];
       const longitude = coordinates[1];
       const id = item._id;
-      const marker = L.marker([longitude, latitude], {restaurantId: id});
+
+      const markerIcon = id === favoriteRestaurantId ? favoriteIcon : defaultIcon;
+
+      const marker = L.marker([longitude, latitude], {restaurantId: id, icon: markerIcon});
       marker.addTo(leafletMap);
       marker.on('click', () => clickMarker(item, id));
     });
@@ -123,10 +143,10 @@ function clickMarker(item, id) {
     <h1>${item.name}</h1>
     <p>${item.address}, ${item.postalCode}, ${item.city}</p>
     <form method="dialog">
-    <button class="button">Close</button>
-    <button class="button" id="menuButtonDay">Daily menu</button>
-    <button class="button" id="menuButtonWeek">Weekly menu</button>
-    <button class="button" id="favoriteRes">Favorite</button>
+    <button class="button"><i class='bx bx-x-circle'></i></button>
+    <button class="button" id="favoriteRes"><i class='bx bx-star' ></i></button>'
+    <button class="button" id="menuButtonDay">Daily</button>
+    <button class="button" id="menuButtonWeek">Weekly</button>
     </form>`;
 
   dialogBox.showModal();
@@ -164,16 +184,12 @@ async function getMenu(id, menuType) {
     if (data.days && Array.isArray(data.days) && data.days.length > 0) {
       data.days.forEach((day) => {
         const dayElement = document.createElement('h3');
-        dayElement.style.color = 'white';
-        dayElement.style.fontWeight = 'bold';
-        dayElement.style.textDecoration = 'underline';
         dayElement.textContent = day.date;
         menuDiv.appendChild(dayElement);
         day.courses.forEach((course) => {
           const courseElement = document.createElement('p');
           const priceText = course.price ? `: ${course.price}` : '';
           courseElement.textContent = `${course.name}${priceText}`;
-          courseElement.style.color = 'black';
           menuDiv.appendChild(courseElement);
         });
       });
@@ -186,7 +202,6 @@ async function getMenu(id, menuType) {
         const menuItem = document.createElement('p');
         const priceText = item.price ? `: ${item.price}` : '';
         menuItem.textContent = `${item.name}${priceText}`;
-        menuItem.style.color = 'black';
         menuDiv.appendChild(menuItem);
       });
     }
