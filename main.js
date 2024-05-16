@@ -93,10 +93,17 @@ async function getUserLocation() {
   }
 }
 
+let favoriteRestaurantId;
+
 async function fetchRestaurants() {
   const url = 'https://10.120.32.94/restaurant/api/v1/restaurants/';
   const user = JSON.parse(localStorage.getItem('user'));
-  const favoriteRestaurantId = user.favouriteRestaurant;
+
+  if (user) {
+    favoriteRestaurantId = user.favouriteRestaurant;
+  } else {
+    favoriteRestaurantId = user ? user.favouriteRestaurant : "default";
+  }
 
   const defaultIcon = L.icon({
     iconUrl: 'resources/defaultmarker.png',

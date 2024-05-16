@@ -1,6 +1,6 @@
 # StudentEats
 
-You can find the project in the following link: [StudenEats](<insert link here>)
+You can find the website in the following link: [StudenEats](https://users.metropolia.fi/~arttuvo/studenteats/)
 
 ## Features:
 
