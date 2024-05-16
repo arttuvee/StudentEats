@@ -76,6 +76,59 @@ header {
   font-weight: 600;
 }
 
+.restaurant-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#restList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#restaurant-list-container h2 {
+  color: #fff;
+  font-family: Outfit, sans-serif;
+  font-weight: 600;
+  margin-top: 3rem;
+}
+
+#restList ul {
+  padding: 0;
+}
+
+.favorite-restaurant {
+  font-weight: bold !important;
+  background-color: var(--primary-color) !important;
+}
+
+#restList li {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  color: black;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 10px black;
+  background-color: var(--background-color);
+  width: 90%;
+}
+
+#restList li:hover {
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
 #restaurant-menu h3 {
   color: var(--primary-color);
   font-family: Outfit, sans-serif;

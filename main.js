@@ -86,14 +86,16 @@ buttonReturnLogin.onclick = function() {
 
 async function getUserLocation() {
   if ('geolocation' in navigator) {
-    await navigator.geolocation.getCurrentPosition(function(position) {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
     });
+    usercoords.push(position.coords.latitude, position.coords.longitude);
   }
 }
 
 let favoriteRestaurantId;
+const restaurants = [];
+const usercoords = [];
 
 async function fetchRestaurants() {
   const url = 'https://10.120.32.94/restaurant/api/v1/restaurants/';
@@ -102,7 +104,7 @@ async function fetchRestaurants() {
   if (user) {
     favoriteRestaurantId = user.favouriteRestaurant;
   } else {
-    favoriteRestaurantId = user ? user.favouriteRestaurant : "default";
+    favoriteRestaurantId = user ? user.favouriteRestaurant : 'default';
   }
 
   const defaultIcon = L.icon({
@@ -133,14 +135,89 @@ async function fetchRestaurants() {
       const marker = L.marker([longitude, latitude], {restaurantId: id, icon: markerIcon});
       marker.addTo(leafletMap);
       marker.on('click', () => clickMarker(item, id));
+      restaurants.push(item);
     });
   } catch (error) {
     console.log(error);
   }
 }
 
+(async function() {
+  try {
+    await Promise.all([getUserLocation(), fetchRestaurants()]);
+
+    // Calculate distance to restaurants and sort them
+    restaurants.forEach((restaurant) => {
+      if (
+        restaurant.location &&
+        restaurant.location.coordinates &&
+        usercoords.length === 2
+      ) {
+        restaurant.distance = leafletMap.distance(
+            [usercoords[0], usercoords[1]],
+            [restaurant.location.coordinates[1], restaurant.location.coordinates[0]],
+        );
+      } else {
+        restaurant.distance = Infinity;
+      }
+    });
+    restaurants.sort((a, b) => a.distance - b.distance);
+    refreshRestaurantList();
+  } catch (error) {
+    console.error(error);
+    window.alert('Encountered an error. :(');
+  }
+})();
+
+function refreshRestaurantList() {
+  const list = document.getElementById('restList');
+  // Clear existing content
+  list.innerHTML = '';
+
+  // Separate favorite and non-favorite restaurants
+  const favoriteRestaurants = [];
+  const otherRestaurants = [];
+
+  restaurants.forEach((restaurant) => {
+    if (restaurant.location && restaurant.location.coordinates) {
+      const lat = restaurant.location.coordinates[1];
+      const lng = restaurant.location.coordinates[0];
+      if (lat && lng) {
+        const listItem = document.createElement('li');
+        const h4 = document.createElement('h4');
+        h4.textContent = restaurant.name;
+        const p = document.createElement('p');
+        p.textContent = `${restaurant.address}, ${restaurant.city}, ${(restaurant.distance / 1000).toFixed(2)} km`;
+        listItem.appendChild(h4);
+        listItem.appendChild(p);
+        listItem.onclick = function() {
+          leafletMap.setView([lat, lng], 13);
+        };
+
+        // Highlight the favorite restaurant
+        if (restaurant._id === favoriteRestaurantId) {
+          listItem.classList.add('favorite-restaurant');
+          const star = document.createElement('i');
+          star.textContent = '⭐';
+          listItem.appendChild(star);
+          favoriteRestaurants.push(listItem);
+        } else {
+          otherRestaurants.push(listItem);
+        }
+      } else {
+        console.error('Invalid restaurant coordinates for:', restaurant.name);
+      }
+    }
+  });
+
+  // Concatenate favoriteRestaurants and otherRestaurants arrays and append to the list
+  const allRestaurants = [...favoriteRestaurants, ...otherRestaurants];
+  allRestaurants.forEach((restaurant) => {
+    list.appendChild(restaurant);
+  });
+}
+
 function clickMarker(item, id) {
-  console.log(id);
   if (!id) {
     console.error('Invalid id:', id);
     return;
@@ -163,21 +240,17 @@ function clickMarker(item, id) {
 
   menuButtonDay.addEventListener('click', function() {
     const menuType = 'daily';
-    console.log(id);
     getMenu(id, menuType);
   });
 
   menuButtonWeek.addEventListener('click', function() {
     menuType = 'weekly';
-    console.log(id);
     getMenu(id, menuType);
   });
 
   favorite.addEventListener('click', async function() {
-    console.log(id);
     await setFavoriteRestaurant(id);
     location.reload();
-    console.log(id);
   });
 }
 
@@ -240,9 +313,7 @@ async function registerUser(event) {
   };
 
   try {
-    console.log(data);
     const response = await fetch('https://10.120.32.94/restaurant/api/v1/users', data);
-    console.log(response);
     if (!response.ok) {
       throw new Error('Registration failed');
     }
@@ -314,7 +385,6 @@ async function loginUser(event) {
       userData.style.color = 'white';
       const favoriteId = data.data.favouriteRestaurant;
       const favorite = await getFavorite(favoriteId);
-      console.log(favorite);
       favoriteRes.textContent = 'Favorite: ' + favorite.name;
       favoriteRes.style.color = 'white';
     }
@@ -343,7 +413,6 @@ async function checkUser() {
     userData.textContent = `Welcome, ${user.username}`;
     const favoriteId = user.favouriteRestaurant;
     const favorite = await getFavorite(favoriteId);
-    console.log(favorite);
     favoriteRes.textContent = 'Favorite: ' + favorite.name;
     userInfo.appendChild(userData);
     userInfo.appendChild(favoriteRes);
